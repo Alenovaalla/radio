@@ -77,6 +77,12 @@ private boolean on;
     }
 
     public void setCurrentNumberStation(int currentNumberStation) {
+        if(currentNumberStation>maxNumberStation){
+            currentNumberStation = 0;
+        }
+        if(currentNumberStation<minNumberStation){
+            currentNumberStation = 9;
+        }
         this.currentNumberStation = currentNumberStation;
     }
 
@@ -85,6 +91,12 @@ private boolean on;
     }
 
     public void setCurrentVolume(int currentVolume) {
+        if(currentVolume>maxVolume){
+            return;
+        }
+        if(currentVolume<minVolume) {
+            return;
+        }
         this.currentVolume = currentVolume;
     }
 
@@ -96,3 +108,5 @@ private boolean on;
         this.on = on;
     }
 }
+
+
