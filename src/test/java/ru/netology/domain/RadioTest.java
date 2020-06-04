@@ -158,11 +158,11 @@ class RadioTest {
     public void shouldCurrentVolumeReturnMaxMin() {
         Radio radio = new Radio();
         radio.setMaxVolume(10);
-        radio.setCurrentVolume(10);
-        int expected = 10;
+        radio.setCurrentVolume(11);
+        int expected = 0;
         int actual = radio.getCurrentVolume();
         radio.setMinVolume(0);
-        radio.setCurrentVolume(0);
+        radio.setCurrentVolume(-1);
         int expected1 =0 ;
         int actual1 = radio.getCurrentVolume();
         assertEquals(expected, actual);
@@ -182,5 +182,17 @@ class RadioTest {
         int actual1 = radio.getCurrentNumberStation();
         assertEquals(expected, actual);
         assertEquals(expected1,actual1);
+    }
+
+    @Test
+    public void shouldIncreaseCurrentVolume2() {
+        Radio radio = new Radio();
+        radio.setMinVolume(0);
+        radio.setMaxVolume(9);
+        radio.setCurrentVolume(9);
+        radio.increaseCurrentVolume();
+        int expected = 9;
+        int actual = radio.getCurrentVolume();
+        assertEquals(expected,actual);
     }
 }
